@@ -1,10 +1,13 @@
 package iteration
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestRepeat(t *testing.T) {
   t.Run("repeating a character 5 times", func(t *testing.T) {
-    got := Repeat("a")
+    got := Repeat("a", 5)
     expect := "aaaaa"
 
     if got != expect {
@@ -15,6 +18,12 @@ func TestRepeat(t *testing.T) {
 
 func BenchmarkRepeat(b *testing.B) {
   for b.Loop() {
-    Repeat("a")
+    Repeat("a", 5)
   }
+}
+
+func ExampleRepeat() {
+  repeat := Repeat("b", 7)
+  fmt.Println(repeat)
+  // Output: bbbbbbb
 }
